@@ -1,15 +1,14 @@
-let texts = document.querySelector("#input");
-let totalCharacter= document.querySelector("#totalCharacters");
-let remainingCharacters= document.querySelector("#remainingCharacters");
+const characters = document.getElementById("input");
+const total = document.getElementById("total");
+const remaining = document.getElementById("rem");
 
-texts.addEventListener("keyup", () => {
-    updateCount();
-  });
-  
-  updateCount()
-  
-  function updateCount() {
-    totalCharacter.innerText = texts.value.length;
-    remainingCharacters.innerText =
-      texts.getAttribute("maxLength") - texts.value.length;
+characters.addEventListener('keyup', (e) => {
+  // console.log(e.target.value.length);
+  const totalCharacters = e.target.value.length;
+  total.innerText = totalCharacters;
+  if (totalCharacters <= 50) {
+    remaining.innerText = 50 - totalCharacters;
+  } else {
+    alert("Limit Exceeded");
   }
+})
